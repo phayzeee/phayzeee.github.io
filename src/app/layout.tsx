@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { personalInfo } from '@/data/portfolio';
 import './globals.css';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 
 export const metadata: Metadata = {
   title: `${personalInfo.name} | ${personalInfo.title}`,
@@ -34,6 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <GoogleAnalytics />
         <script
           dangerouslySetInnerHTML={{
             __html: `

@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Mail, Linkedin, Github, MapPin, Send, CheckCircle2, AlertCircle } from 'lucide-react';
 import { personalInfo } from '@/data/portfolio';
+import { event } from '@/lib/gtag';
 
 export default function Contact() {
   const ref = useRef(null);
@@ -36,6 +37,11 @@ export default function Contact() {
     if (response.ok) {
       setStatus('success');
       setFormState({ name: '', email: '', message: '' });
+      event({
+        action: 'submit_form',
+        category: 'Contact',
+        label: 'Contact Form Submission',
+      });
       setTimeout(() => setStatus('idle'), 3000);
     } else {
       setStatus('error');
