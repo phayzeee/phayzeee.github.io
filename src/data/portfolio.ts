@@ -250,9 +250,9 @@ export const projects = [
 
   screenshots: [
     "/images/projects/sellnow-1.png",
-    "/images/projects/sellnow-2.png",
-    "/images/projects/sellnow-3.png",
-    "/images/projects/sellnow-4.png"
+    "/images/projects/sellnow-2.PNG",
+    "/images/projects/sellnow-3.PNG",
+    "/images/projects/sellnow-4.PNG"
   ],
 
   links: {
