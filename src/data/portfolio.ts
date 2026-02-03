@@ -347,7 +347,7 @@ export const projects = [
 
   links: {
     github: null,
-    playStore: null
+    playStore: "https://apps.apple.com/us/app/home-bp/id6757713424"
   },
 
   highlights: [
