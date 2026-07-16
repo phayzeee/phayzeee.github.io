@@ -13,7 +13,7 @@ export default function Footer() {
           {/* Logo & Copyright */}
           <div className="flex flex-col items-center md:items-start gap-2">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-accent-500 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg gradient-brand flex items-center justify-center">
                 <span className="text-white font-bold text-sm">
                   {personalInfo.name.split(' ').map(n => n[0]).join('')}
                 </span>
@@ -58,7 +58,7 @@ export default function Footer() {
 
           {/* Made with */}
           <p className="text-sm text-neutral-500 dark:text-neutral-400 flex items-center gap-1">
-            Made with <Heart size={14} className="text-red-500 fill-current" /> for Android
+            Made with <Heart size={14} className="text-red-500 fill-current" /> for Mobile
           </p>
         </div>
       </div>

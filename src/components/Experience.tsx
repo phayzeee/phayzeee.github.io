@@ -108,8 +108,8 @@ export default function Experience() {
             Experience
           </h2>
           <p className="body-large max-w-2xl mx-auto">
-            Building Android applications across diverse industries, 
-            from early-stage startups to enterprise solutions.
+            Building mobile applications across diverse industries,
+            from early-stage startups to enterprise banking solutions.
           </p>
         </motion.div>
 

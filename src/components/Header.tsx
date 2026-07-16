@@ -56,7 +56,7 @@ export default function Header() {
               onClick={(e) => { e.preventDefault(); handleNavClick('#home'); }}
               className="flex items-center gap-2"
             >
-              <div className="w-10 h-10 rounded-xl bg-accent-500 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl gradient-brand flex items-center justify-center">
                 <span className="text-white font-bold text-lg">
                   {personalInfo.name.split(' ').map(n => n[0]).join('')}
                 </span>

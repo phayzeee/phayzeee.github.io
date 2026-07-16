@@ -3,36 +3,36 @@
 
 export const personalInfo = {
   name: "Faizan Ahmed Khan",
-  title: "Senior Android Developer",
-  tagline: "Building scalable, production-ready Android applications",
+  title: "Mobile App Developer",
+  tagline: "Building scalable, production-ready mobile applications",
   email: "faizanhmd3@gmail.com",
   phone: "+923312602736",
   location: "Karachi, Pakistan",
   linkedin: "https://linkedin.com/in/phayzee",
   github: "https://github.com/phayzeee",
-  resume: "/FaizanKhan_AndroidResume.pdf", // Place your resume in the public folder
-  
+  resume: "/FaizanKhan_MobileDev.pdf", // Place your resume in the public folder
+
   // Hero section summary
-  heroSummary: "4+ years crafting robust Android applications with modern architecture patterns. Passionate about clean code, performance optimization, and delivering exceptional user experiences.",
-  
+  heroSummary: "4+ years shipping production mobile apps — native Android with Kotlin and cross-platform with Flutter. From banking-grade payment systems to consumer apps serving 500K+ users, I build reliable, polished mobile experiences end to end.",
+
   // About section - keep it concise
   about: {
-    intro: "I'm a Senior Android Developer specializing in building production-grade mobile applications that scale. My focus is on implementing modern Android architecture patterns and writing maintainable, testable code.",
-    
+    intro: "I'm a Mobile App Developer specializing in production-grade applications across native Android and Flutter. My focus is on modern architecture patterns, maintainable code, and mobile experiences that feel great on every device.",
+
     paragraphs: [
-      "Over the past four years, I've led the development of Android applications across diverse domains—from real-time payment systems to large-scale e-commerce platforms. I approach each project with a focus on architectural integrity, ensuring apps remain maintainable as they grow.",
-      
-      "My expertise lies in Kotlin-first development, leveraging Jetpack Compose for modern UI, and implementing clean architecture with proper separation of concerns. I'm particularly passionate about optimizing app performance and creating smooth, responsive user experiences.",
-      
-      "Beyond native Android, I have hands-on production experience with Flutter for cross-platform projects, giving me a broader perspective on mobile development paradigms."
+      "Over the past four years, I've built and shipped mobile applications across diverse domains—from real-time payment systems and large-scale e-commerce platforms to health-tech apps. I approach each project with a focus on architectural integrity, ensuring apps remain maintainable as they grow.",
+
+      "On the native side, I work Kotlin-first with Jetpack Compose and clean architecture. On the cross-platform side, I've delivered Flutter apps to both the Play Store and App Store using BLoC and a structured, testable approach — the right tool for the right product.",
+
+      "Regardless of the stack, my priorities stay the same: performance, offline reliability, and smooth, responsive user experiences that users can depend on."
     ],
-    
+
     highlights: [
-      "Modern Android architecture (MVVM, Clean Architecture, MVI)",
-      "Kotlin Coroutines & Flow",
-      "Jetpack Compose and XML",
-      "Performance optimization and memory management",
-      "Modular, maintainable Android codebases"
+      "Native Android (Kotlin, Jetpack Compose, Coroutines & Flow)",
+      "Flutter & Dart (BLoC, shipped to Play Store and App Store)",
+      "Modern mobile architecture (MVVM, Clean Architecture, MVI)",
+      "Performance optimization and offline-first design",
+      "Modular, maintainable mobile codebases"
     ]
   }
 };
@@ -294,10 +294,11 @@ export const projects = [
 
   screenshots: [
     "/images/projects/myhomebp-1.png",
-    "/images/projects/myhomebp-2.jpeg",
-    "/images/projects/myhomebp-3.jpeg",
-    "/images/projects/myhomebp-4.jpeg",
-    "/images/projects/myhomebp-5.jpeg"
+    "/images/projects/myhomebp-2.png",
+    "/images/projects/myhomebp-3.png",
+    "/images/projects/myhomebp-4.png",
+    "/images/projects/myhomebp-5.png",
+    "/images/projects/myhomebp-6.png"
   ],
 
   links: {
@@ -339,10 +340,11 @@ export const projects = [
 
   screenshots: [
     "/images/projects/myhomebp-1.png",
-    "/images/projects/myhomebpios-2.jpeg",
-    "/images/projects/myhomebpios-3.jpeg",
-    "/images/projects/myhomebpios-4.jpeg",
-    "/images/projects/myhomebpios-5.jpeg"
+    "/images/projects/myhomebp-2.png",
+    "/images/projects/myhomebp-3.png",
+    "/images/projects/myhomebp-4.png",
+    "/images/projects/myhomebp-5.png",
+    "/images/projects/myhomebp-6.png"
   ],
 
   links: {
@@ -455,11 +457,11 @@ export const experience = [
   }
 ];
 
-// Skills - Organized by priority
+// Skills - Organized by platform
 export const skills = {
   primary: {
-    title: "Android Development",
-    description: "Production-grade native Android development for large-scale apps",
+    title: "Native Android",
+    description: "Production-grade native development for large-scale apps",
     skills: [
       { name: "Kotlin", level: "Expert" },
       { name: "Jetpack Compose", level: "Intermediate" },
@@ -473,14 +475,15 @@ export const skills = {
   },
   
   secondary: {
-    title: "Cross-Platform",
-    description: "Hands-on exposure in production contexts",
+    title: "Flutter & Cross-Platform",
+    description: "Production Flutter apps shipped to Play Store and App Store",
     skills: [
-      { name: "Flutter", level: "Intermediate" },
-      { name: "Dart", level: "Intermediate" },
+      { name: "Flutter", level: "Advanced" },
+      { name: "Dart", level: "Advanced" },
       { name: "State Management (BLoC)", level: "Intermediate" },
-      { name: "GetIt", level: "Basic" },
-      { name: "Platform Channels", level: "Basic" }
+      { name: "GetIt", level: "Intermediate" },
+      { name: "Platform Channels", level: "Basic" },
+      { name: "Charts & Data Visualization", level: "Intermediate" }
     ]
   },
   

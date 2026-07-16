@@ -22,6 +22,22 @@ module.exports = {
           700: '#1D9854',
           800: '#156C3C',
           900: '#0D4024',
+          950: '#062712',
+        },
+        // Flutter-inspired accent
+        flutter: {
+          DEFAULT: '#13B9FD',
+          50: '#E7F8FF',
+          100: '#CFF1FE',
+          200: '#9FE3FE',
+          300: '#6FD5FD',
+          400: '#3FC7FD',
+          500: '#13B9FD',
+          600: '#0298DA',
+          700: '#0275A8',
+          800: '#025276',
+          900: '#012F44',
+          950: '#011C29',
         },
         // Neutral palette
         neutral: {

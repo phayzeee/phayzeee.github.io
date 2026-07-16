@@ -3,8 +3,9 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { CheckCircle2, Code2, Layers, Smartphone } from 'lucide-react';
+import { CheckCircle2, Layers } from 'lucide-react';
 import { personalInfo } from '@/data/portfolio';
+import { AndroidIcon, FlutterIcon } from './icons';
 
 export default function About() {
   const ref = useRef(null);
@@ -40,11 +41,12 @@ export default function About() {
             <motion.span variants={itemVariants} className="label mb-4 block">
               About Me
             </motion.span>
-            
+
             <motion.h2 variants={itemVariants} className="heading-2 text-neutral-900 dark:text-white mb-6">
-              Engineering Android experiences that scale
+              Engineering mobile experiences{' '}
+              <span className="gradient-text-brand">that scale</span>
             </motion.h2>
-            
+
             <motion.p variants={itemVariants} className="body-large mb-6">
               {personalInfo.about.intro}
             </motion.p>
@@ -56,57 +58,49 @@ export default function About() {
             ))}
           </div>
 
-          {/* Right Column - Highlights & Cards */}
+          {/* Right Column - Platform & Architecture Cards */}
           <div className="space-y-6">
-            {/* Core Expertise Card */}
+            {/* Platform Cards - equal weight */}
+            <div className="grid sm:grid-cols-2 gap-6">
+              <motion.div variants={itemVariants} className="card p-6 border-accent-500/20 bg-accent-500/[0.03]">
+                <div className="w-10 h-10 rounded-xl bg-accent-500/15 flex items-center justify-center mb-4">
+                  <AndroidIcon className="w-5 h-5 text-accent-600 dark:text-accent-400" />
+                </div>
+                <h3 className="font-semibold text-neutral-900 dark:text-white mb-2">Native Android</h3>
+                <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                  Kotlin-first development with Jetpack Compose, Coroutines & Flow — trusted for
+                  banking-grade payment systems at national scale.
+                </p>
+              </motion.div>
+
+              <motion.div variants={itemVariants} className="card p-6 border-flutter-500/20 bg-flutter-500/[0.03]">
+                <div className="w-10 h-10 rounded-xl bg-flutter-500/15 flex items-center justify-center mb-4">
+                  <FlutterIcon className="w-5 h-5 text-flutter-600 dark:text-flutter-400" />
+                </div>
+                <h3 className="font-semibold text-neutral-900 dark:text-white mb-2">Flutter</h3>
+                <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                  Production cross-platform apps with Dart & BLoC — shipped to both the
+                  Play Store and App Store from a single codebase.
+                </p>
+              </motion.div>
+            </div>
+
+            {/* Architecture & Quality Card */}
             <motion.div variants={itemVariants} className="card p-6">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-accent-500/10 flex items-center justify-center">
-                  <Smartphone className="w-5 h-5 text-accent-600 dark:text-accent-400" />
+                <div className="w-10 h-10 rounded-xl gradient-brand flex items-center justify-center">
+                  <Layers className="w-5 h-5 text-white" />
                 </div>
-                <h3 className="font-semibold text-neutral-900 dark:text-white">Core Expertise</h3>
+                <h3 className="font-semibold text-neutral-900 dark:text-white">What I Bring to Every App</h3>
               </div>
               <ul className="space-y-3">
-                {personalInfo.about.highlights.slice(0, 3).map((highlight, index) => (
+                {personalInfo.about.highlights.map((highlight, index) => (
                   <li key={index} className="flex items-start gap-3 text-neutral-600 dark:text-neutral-400">
                     <CheckCircle2 className="w-5 h-5 text-accent-500 flex-shrink-0 mt-0.5" />
                     <span>{highlight}</span>
                   </li>
                 ))}
               </ul>
-            </motion.div>
-
-            {/* Architecture Card */}
-            <motion.div variants={itemVariants} className="card p-6">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center">
-                  <Layers className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                </div>
-                <h3 className="font-semibold text-neutral-900 dark:text-white">Architecture Focus</h3>
-              </div>
-              <ul className="space-y-3">
-                {personalInfo.about.highlights.slice(3).map((highlight, index) => (
-                  <li key={index} className="flex items-start gap-3 text-neutral-600 dark:text-neutral-400">
-                    <CheckCircle2 className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
-                    <span>{highlight}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            {/* Cross-Platform Note */}
-            <motion.div variants={itemVariants} className="card p-6 bg-neutral-50 dark:bg-neutral-800/50">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-xl bg-sky-500/10 flex items-center justify-center">
-                  <Code2 className="w-5 h-5 text-sky-600 dark:text-sky-400" />
-                </div>
-                <h3 className="font-semibold text-neutral-900 dark:text-white">Cross-Platform</h3>
-              </div>
-              <p className="text-sm text-neutral-600 dark:text-neutral-400">
-                Beyond native Android, I have hands-on production experience with 
-                <span className="font-medium text-neutral-900 dark:text-neutral-200"> Flutter </span>
-                for cross-platform projects, enabling rapid multi-platform delivery when needed.
-              </p>
             </motion.div>
           </div>
         </motion.div>

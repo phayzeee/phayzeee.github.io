@@ -2,22 +2,9 @@
 
 import { useState, useRef } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { ExternalLink, Github, ChevronLeft, ChevronRight, X, LayoutGrid } from 'lucide-react';
 import { projects } from '@/data/portfolio';
-
-// Android robot SVG icon
-const AndroidIcon = () => (
-  <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="currentColor">
-    <path d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8C2.67 8 2 8.67 2 9.5v7c0 .83.67 1.5 1.5 1.5S5 17.33 5 16.5v-7C5 8.67 4.33 8 3.5 8zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zm-4.97-5.84l1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48C13.85 1.23 12.95 1 12 1c-.96 0-1.86.23-2.66.63L7.85.15c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.31 1.31C6.97 3.26 6 5.01 6 7h12c0-1.99-.97-3.75-2.47-4.84zM10 5H9V4h1v1zm5 0h-1V4h1v1z"/>
-  </svg>
-);
-
-// Flutter icon
-const FlutterIcon = () => (
-  <svg viewBox="0 0 24 24" className="w-3.5 h-3.5" fill="currentColor">
-    <path d="M14.314 0L2.3 12 6 15.7 21.684.013h-7.357L14.314 0zm.014 11.072L7.857 17.53l6.47 6.47H21.7l-6.46-6.468 6.46-6.46h-7.37z"/>
-  </svg>
-);
+import { AndroidIcon, FlutterIcon } from './icons';
 
 interface Project {
   id: string;
@@ -39,17 +26,37 @@ interface Project {
   highlights: string[];
 }
 
-function ProjectCard({ project, onClick }: { project: Project; onClick: () => void }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+type Filter = 'all' | 'android' | 'flutter';
 
+const filters: { id: Filter; label: string; icon: React.ReactNode }[] = [
+  { id: 'all', label: 'All Projects', icon: <LayoutGrid className="w-3.5 h-3.5" /> },
+  { id: 'android', label: 'Android', icon: <AndroidIcon className="w-3.5 h-3.5" /> },
+  { id: 'flutter', label: 'Flutter', icon: <FlutterIcon className="w-3.5 h-3.5" /> },
+];
+
+function PlatformBadge({ platform }: { platform: string }) {
+  return platform === 'android' ? (
+    <span className="platform-android">
+      <AndroidIcon className="w-3.5 h-3.5" />
+      Android
+    </span>
+  ) : (
+    <span className="platform-flutter">
+      <FlutterIcon className="w-3.5 h-3.5" />
+      Flutter
+    </span>
+  );
+}
+
+function ProjectCard({ project, onClick }: { project: Project; onClick: () => void }) {
   return (
     <motion.article
-      ref={ref}
-      initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-      transition={{ duration: 0.5 }}
-      className={`card-hover overflow-hidden cursor-pointer ${project.featured ? 'lg:col-span-2' : ''}`}
+      layout
+      initial={{ opacity: 0, scale: 0.96 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.96 }}
+      transition={{ duration: 0.3 }}
+      className="card-brand-hover overflow-hidden cursor-pointer group"
       onClick={onClick}
     >
       {/* Screenshot Preview */}
@@ -58,7 +65,7 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
           <img
             src={project.screenshots[0]}
             alt={`${project.name} screenshot`}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
               target.style.display = 'none';
@@ -68,18 +75,14 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
           <div className="w-full h-full flex items-center justify-center">
             <div className="text-center p-8">
               <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center ${
-                project.platform === 'android' 
-                  ? 'bg-accent-500/20' 
-                  : 'bg-sky-500/20'
+                project.platform === 'android'
+                  ? 'bg-accent-500/20'
+                  : 'bg-flutter-500/20'
               }`}>
                 {project.platform === 'android' ? (
-                  <svg viewBox="0 0 24 24" className="w-8 h-8 text-accent-500" fill="currentColor">
-                    <path d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8C2.67 8 2 8.67 2 9.5v7c0 .83.67 1.5 1.5 1.5S5 17.33 5 16.5v-7C5 8.67 4.33 8 3.5 8zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zm-4.97-5.84l1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48C13.85 1.23 12.95 1 12 1c-.96 0-1.86.23-2.66.63L7.85.15c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.31 1.31C6.97 3.26 6 5.01 6 7h12c0-1.99-.97-3.75-2.47-4.84zM10 5H9V4h1v1zm5 0h-1V4h1v1z"/>
-                  </svg>
+                  <AndroidIcon className="w-8 h-8 text-accent-500" />
                 ) : (
-                  <svg viewBox="0 0 24 24" className="w-8 h-8 text-sky-500" fill="currentColor">
-                    <path d="M14.314 0L2.3 12 6 15.7 21.684.013h-7.357L14.314 0zm.014 11.072L7.857 17.53l6.47 6.47H21.7l-6.46-6.468 6.46-6.46h-7.37z"/>
-                  </svg>
+                  <FlutterIcon className="w-8 h-8 text-flutter-500" />
                 )}
               </div>
               <p className="text-sm text-neutral-400 dark:text-neutral-500">
@@ -88,20 +91,10 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
             </div>
           </div>
         )}
-        
+
         {/* Platform badge */}
         <div className="absolute top-4 left-4">
-          {project.platform === 'android' ? (
-            <span className="platform-android">
-              <AndroidIcon />
-              Android
-            </span>
-          ) : (
-            <span className="platform-flutter">
-              <FlutterIcon />
-              Flutter
-            </span>
-          )}
+          <PlatformBadge platform={project.platform} />
         </div>
 
         {/* Featured badge */}
@@ -125,7 +118,7 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
 
         {/* Highlights */}
         <div className="flex flex-wrap gap-2 mb-4">
-          {project.highlights.map((highlight, index) => (
+          {project.highlights.slice(0, 2).map((highlight, index) => (
             <span key={index} className="accent-badge text-xs">
               {highlight}
             </span>
@@ -197,7 +190,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                   target.style.display = 'none';
                 }}
               />
-              
+
               {/* Gallery controls */}
               {project.screenshots.length > 1 && (
                 <>
@@ -213,7 +206,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                   >
                     <ChevronRight size={20} />
                   </button>
-                  
+
                   {/* Dots */}
                   <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
                     {project.screenshots.map((_, index) => (
@@ -221,8 +214,8 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                         key={index}
                         onClick={() => setCurrentImage(index)}
                         className={`w-2 h-2 rounded-full transition-colors ${
-                          index === currentImage 
-                            ? 'bg-white' 
+                          index === currentImage
+                            ? 'bg-white'
                             : 'bg-white/50 hover:bg-white/75'
                         }`}
                       />
@@ -236,20 +229,10 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
               <p className="text-neutral-400">No screenshots available</p>
             </div>
           )}
-          
+
           {/* Platform badge */}
           <div className="absolute top-4 left-4">
-            {project.platform === 'android' ? (
-              <span className="platform-android">
-                <AndroidIcon />
-                Android
-              </span>
-            ) : (
-              <span className="platform-flutter">
-                <FlutterIcon />
-                Flutter
-              </span>
-            )}
+            <PlatformBadge platform={project.platform} />
           </div>
         </div>
 
@@ -320,7 +303,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                 href={project.links.playStore}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary"
+                className="btn-brand"
               >
                 <ExternalLink size={18} />
                 View on Play Store
@@ -346,12 +329,13 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [activeFilter, setActiveFilter] = useState<Filter>('all');
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  // Separate Android and Flutter projects
-  const androidProjects = projects.filter(p => p.platform === 'android');
-  const flutterProjects = projects.filter(p => p.platform === 'flutter');
+  const filteredProjects = activeFilter === 'all'
+    ? projects
+    : projects.filter(p => p.platform === activeFilter);
 
   return (
     <section id="projects" className="section-padding bg-neutral-50 dark:bg-neutral-950">
@@ -360,61 +344,60 @@ export default function Projects() {
           ref={ref}
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          className="text-center mb-12"
+          className="text-center mb-10"
         >
           <span className="label mb-4 block">Featured Work</span>
           <h2 className="heading-2 text-neutral-900 dark:text-white mb-4">
             Projects
           </h2>
           <p className="body-large max-w-2xl mx-auto">
-            A selection of Android applications I&apos;ve architected and built, 
-            showcasing modern development practices and scalable solutions.
+            A selection of mobile applications I&apos;ve built across native Android
+            and Flutter — from banking-grade payment systems to consumer apps.
           </p>
         </motion.div>
 
-        {/* Android Projects */}
-        <div className="mb-12">
-          <div className="flex items-center gap-2 mb-6">
-            <span className="platform-android">
-              <AndroidIcon />
-              Android
-            </span>
-            <span className="text-sm text-neutral-500">Primary Focus</span>
+        {/* Platform Filter Tabs */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+          transition={{ delay: 0.15 }}
+          className="flex justify-center mb-12"
+        >
+          <div className="inline-flex items-center gap-1 p-1.5 rounded-full bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm">
+            {filters.map((filter) => (
+              <button
+                key={filter.id}
+                onClick={() => setActiveFilter(filter.id)}
+                className={`filter-tab ${activeFilter === filter.id ? 'filter-tab-active' : ''}`}
+              >
+                {activeFilter === filter.id && (
+                  <motion.span
+                    layoutId="filter-pill"
+                    className="absolute inset-0 rounded-full gradient-brand"
+                    transition={{ type: 'spring', duration: 0.5 }}
+                  />
+                )}
+                <span className="relative z-10 inline-flex items-center gap-1.5">
+                  {filter.icon}
+                  {filter.label}
+                </span>
+              </button>
+            ))}
           </div>
-          
-          <div className="grid md:grid-cols-2 gap-6">
-            {androidProjects.map((project) => (
+        </motion.div>
+
+        {/* Projects Grid */}
+        <motion.div layout className="grid md:grid-cols-2 gap-6">
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project) => (
               <ProjectCard
                 key={project.id}
                 project={project}
                 onClick={() => setSelectedProject(project)}
               />
             ))}
-          </div>
-        </div>
-
-        {/* Flutter Projects */}
-        {flutterProjects.length > 0 && (
-          <div>
-            <div className="flex items-center gap-2 mb-6">
-              <span className="platform-flutter">
-                <FlutterIcon />
-                Flutter
-              </span>
-              <span className="text-sm text-neutral-500">Cross-Platform</span>
-            </div>
-            
-            <div className="grid md:grid-cols-2 gap-6">
-              {flutterProjects.map((project) => (
-                <ProjectCard
-                  key={project.id}
-                  project={project}
-                  onClick={() => setSelectedProject(project)}
-                />
-              ))}
-            </div>
-          </div>
-        )}
+          </AnimatePresence>
+        </motion.div>
       </div>
 
       {/* Project Modal */}

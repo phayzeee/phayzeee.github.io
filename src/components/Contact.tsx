@@ -87,8 +87,8 @@ export default function Contact() {
             Contact
           </h2>
           <p className="body-large max-w-2xl mx-auto">
-            Interested in working together? I&apos;m always open to discussing new 
-            Android projects, technical challenges, or opportunities.
+            Interested in working together? I&apos;m always open to discussing new
+            mobile projects, technical challenges, or opportunities.
           </p>
         </motion.div>
 
@@ -105,7 +105,7 @@ export default function Contact() {
                 Let&apos;s Connect
               </h3>
               <p className="body-base mb-6">
-                Whether you have a project in mind, want to discuss Android development, 
+                Whether you have a project in mind, want to discuss mobile development,
                 or just want to say hi — feel free to reach out.
               </p>
 
