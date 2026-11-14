@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { CheckCircle2, Layers } from 'lucide-react';
+import { CheckCircle2, GraduationCap, Layers } from 'lucide-react';
 import { personalInfo } from '@/data/portfolio';
 import { AndroidIcon, FlutterIcon } from './icons';
 
@@ -98,6 +98,30 @@ export default function About() {
                   <li key={index} className="flex items-start gap-3 text-neutral-600 dark:text-neutral-400">
                     <CheckCircle2 className="w-5 h-5 text-accent-500 flex-shrink-0 mt-0.5" />
                     <span>{highlight}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* Education & Certification Card */}
+            <motion.div variants={itemVariants} className="card p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-xl bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center">
+                  <GraduationCap className="w-5 h-5 text-neutral-600 dark:text-neutral-400" />
+                </div>
+                <h3 className="font-semibold text-neutral-900 dark:text-white">Education & Certification</h3>
+              </div>
+              <ul className="space-y-3">
+                {personalInfo.education.map((item) => (
+                  <li key={item.degree} className="text-neutral-600 dark:text-neutral-400">
+                    <span className="font-medium text-neutral-800 dark:text-neutral-200">{item.degree}</span>
+                    <span className="block text-sm">{item.school} · {item.period}</span>
+                  </li>
+                ))}
+                {personalInfo.certifications.map((item) => (
+                  <li key={item.name} className="text-neutral-600 dark:text-neutral-400">
+                    <span className="font-medium text-neutral-800 dark:text-neutral-200">{item.name}</span>
+                    <span className="block text-sm">{item.detail} · {item.year}</span>
                   </li>
                 ))}
               </ul>

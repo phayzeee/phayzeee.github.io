@@ -120,7 +120,7 @@ export default function Hero() {
               <div className="text-sm text-neutral-500">Years Experience</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-neutral-900 dark:text-white">500K+</div>
+              <div className="text-3xl font-bold text-neutral-900 dark:text-white">100K+</div>
               <div className="text-sm text-neutral-500">Users Served</div>
             </div>
             <div>

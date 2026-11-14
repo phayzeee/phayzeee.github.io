@@ -13,32 +13,97 @@ export const personalInfo = {
   resume: "/FaizanKhan_MobileDev.pdf", // Place your resume in the public folder
 
   // Hero section summary
-  heroSummary: "4+ years shipping production mobile apps — native Android with Kotlin and cross-platform with Flutter. From banking-grade payment systems to consumer apps serving 500K+ users, I build reliable, polished mobile experiences end to end.",
+  heroSummary: "4+ years shipping production mobile apps — native Android with Kotlin and Jetpack Compose, and cross-platform with Flutter. From banking and POS platforms serving 100K+ daily active users to regulated eKYC onboarding and consumer apps, I build reliable, polished mobile experiences end to end.",
 
   // About section - keep it concise
   about: {
     intro: "I'm a Mobile App Developer specializing in production-grade applications across native Android and Flutter. My focus is on modern architecture patterns, maintainable code, and mobile experiences that feel great on every device.",
 
     paragraphs: [
-      "Over the past four years, I've built and shipped mobile applications across diverse domains—from real-time payment systems and large-scale e-commerce platforms to health-tech apps. I approach each project with a focus on architectural integrity, ensuring apps remain maintainable as they grow.",
+      "Over the past four years, I've built and shipped mobile applications across consumer and enterprise products — e-commerce, marketplace, social, real-time tracking, logistics, health monitoring, banking and POS, and most recently regulated eKYC onboarding for Pakistan's capital market. I approach each project with a focus on architectural integrity, ensuring apps remain maintainable as they grow.",
 
-      "On the native side, I work Kotlin-first with Jetpack Compose and clean architecture. On the cross-platform side, I've delivered Flutter apps to both the Play Store and App Store using BLoC and a structured, testable approach — the right tool for the right product.",
+      "Much of that work has been inside UAE-headquartered technology groups — Branex AE in Dubai, then the OMA Emirates Group in Sharjah — including right-to-left and multi-language UI for Gulf markets, and banking apps serving 100K+ daily active users at a sustained sub-1% crash rate.",
 
-      "Regardless of the stack, my priorities stay the same: performance, offline reliability, and smooth, responsive user experiences that users can depend on."
+      "On the native side, I work Kotlin-first with Jetpack Compose, Hilt and clean, modular architecture. On the cross-platform side, I've delivered Flutter apps to both the Play Store and App Store using BLoC and a structured, testable approach — the right tool for the right product."
     ],
 
     highlights: [
-      "Native Android (Kotlin, Jetpack Compose, Coroutines & Flow)",
+      "Native Android (Kotlin, Jetpack Compose, Coroutines & Flow, Hilt)",
       "Flutter & Dart (BLoC, shipped to Play Store and App Store)",
       "Modern mobile architecture (MVVM, Clean Architecture, MVI)",
-      "Performance optimization and offline-first design",
+      "RTL and multi-language UI for Gulf markets",
+      "Performance profiling and Crashlytics-driven stability",
       "Modular, maintainable mobile codebases"
     ]
-  }
+  },
+
+  education: [
+    {
+      degree: "BSc Computer Science",
+      school: "Bahria University, Karachi",
+      period: "2018 – 2022"
+    }
+  ],
+
+  certifications: [
+    {
+      name: "Advanced Android Bootcamp",
+      detail: "Jetpack, architecture and modern Android development",
+      year: "2023"
+    }
+  ]
 };
 
 // Projects - Order: Android projects first, Flutter projects last
 export const projects = [
+  {
+  id: "stockspk",
+  name: "StocksPK",
+  platform: "android",
+  featured: false,
+  shortDescription: "Digital brokerage account-opening and KYC app built for CDC Pakistan",
+
+  // Problem → Approach → Outcome
+  description: {
+    problem: "Opening a brokerage account in Pakistan's capital market meant paperwork and repeating identity checks with each broker. Investors needed one digital profile, verified once, that could open accounts with any broker.",
+
+    approach: "Built the app in Kotlin and Jetpack Compose with feature-based modularisation and a unidirectional MVI state flow: an immutable UiState per screen, typed actions, and a one-shot event channel for navigation and errors, with Hilt for dependency injection. Delivered a 30-step regulated onboarding journey covering CNIC document scanning with ML Kit, liveness capture, FATCA and Zakat declarations, and resumable drafts persisted via DataStore.",
+
+    outcome: "Live on Google Play as a paperless path from signup through identity verification to a live trading account. A shared library of reusable form components reduced build time for each new onboarding step."
+  },
+
+  techStack: [
+    "Kotlin",
+    "Jetpack Compose",
+    "MVI",
+    "Hilt",
+    "ML Kit",
+    "DataStore",
+    "Clean Architecture",
+    "Multi-module"
+  ],
+
+  screenshots: [
+    "/images/projects/stockspk-logo.png",
+    "/images/projects/stockspk-1.jpg",
+    "/images/projects/stockspk-2.jpg",
+    "/images/projects/stockspk-3.jpg",
+    "/images/projects/stockspk-4.jpg",
+    "/images/projects/stockspk-5.jpg"
+  ],
+
+  links: {
+    github: null, // Private client repository
+    playStore: "https://play.google.com/store/apps/details?id=com.cdc.asaanconnect"
+  },
+
+  highlights: [
+    "30-step regulated eKYC onboarding journey",
+    "CNIC scanning with ML Kit and liveness capture",
+    "Jetpack Compose with unidirectional MVI",
+    "Resumable drafts persisted via DataStore"
+  ]
+},
   {
   id: "hbl-pos",
   name: "Habib Bank Limited POS",
@@ -364,25 +429,52 @@ export const projects = [
 // Work Experience
 export const experience = [
   {
-    id: "oma-emirates",
-    company: "OMA Emirates",
+    id: "tawha",
+    company: "Tawha Technologies",
     role: "Senior Software Engineer",
-    period: "June 2024 – Present",
+    period: "May 2026 – Present",
     location: "Karachi, Pakistan",
     type: "Full-time",
-    
-     description: "Core Android contributor on large-scale banking and merchant applications, focusing on stability, modular architecture, and real-world transactional workflows.",
-  
+
+    description: "Android engineer on StocksPK, a digital brokerage account-opening and KYC application built for CDC Pakistan, taking users from signup through identity verification to a live trading account.",
+
+    responsibilities: [
+      "Built the application in Kotlin and Jetpack Compose with feature-based modularisation and Hilt for dependency injection",
+      "Implemented a unidirectional MVI state flow: immutable UiState per screen, typed actions, and a one-shot event channel for navigation and errors",
+      "Delivered a 30-step regulated onboarding journey covering CNIC document scanning with ML Kit, liveness capture, and FATCA and Zakat declarations",
+      "Added resumable onboarding drafts persisted via DataStore",
+      "Built a shared library of reusable form components that reduced build time for each new onboarding step"
+    ],
+
+    techStack: [
+      "Kotlin",
+      "Jetpack Compose",
+      "MVI",
+      "Hilt",
+      "ML Kit",
+      "DataStore",
+      "Clean Architecture",
+      "Multi-Modular Architecture"
+    ]
+  },
+  {
+    id: "oma-emirates",
+    company: "OMA Pakistan (an OMA Emirates Group company)",
+    role: "Software Engineer, Mobile",
+    period: "June 2024 – May 2026",
+    location: "Karachi, Pakistan",
+    type: "Full-time",
+
+     description: "OMA Emirates Group is a Sharjah-headquartered payment technology provider serving banks and merchants across the MENA region. Worked on its nationally deployed banking and POS applications.",
+
   responsibilities: [
-    "Developing and maintaining complex Android applications used in banking and merchant environments at national scale",
-    "Building and enhancing modular Android components using Clean Architecture and MVVM for better maintainability and feature isolation",
-    "Implementing and improving transaction-related features, including QR-based payment flows and real-time processing",
-    "Working on offline-capable features with reliable data synchronization and failure recovery",
-    "Collaborating closely with backend, QA, and product teams to analyze requirements and deliver technically feasible solutions",
-    "Handling production issues, bug fixes, and performance optimizations to ensure high stability under real-world usage",
-    "Participating in code reviews and contributing to engineering best practices across the Android team"
+    "Delivered end-to-end features for nationally deployed banking and POS applications serving 100K+ daily active users, including the merchant POS platform used by HBL and Meezan Bank, two of Pakistan's largest banks",
+    "Integrated QR-based payment SDKs and real-time MQTT messaging pipelines, reducing transaction latency by 30% under heavy production load",
+    "Sustained a sub-1% crash rate across high-traffic merchant applications through proactive performance profiling and Crashlytics-driven triage",
+    "Architected modular components using Clean Architecture and MVVM, improving feature isolation and long-term maintainability across a large shared codebase",
+    "Ran code reviews and mentored junior engineers on SOLID principles and modular design"
   ],
-  
+
   techStack: [
     "Kotlin",
     "Java",
@@ -393,57 +485,56 @@ export const experience = [
     "ISO-8583",
     "Retrofit",
     "Room",
-    "MQTT"
+    "MQTT",
+    "Firebase Crashlytics"
   ]
   },
   {
-    id: "nanosoft",
-    company: "Nanosoft Technologies",
-    role: "Associate Software Engineer",
+    id: "branex",
+    company: "Branex Consultancy Services (Branex AE)",
+    role: "Associate Software Engineer, Mobile",
     period: "Feb 2022 – June 2024",
-    location: "Karachi, Pakistan",
+    location: "Dubai, UAE · delivered from Karachi",
     type: "Full-time",
-    
-      description: "Android developer working on multiple full-scale applications across e-commerce, logistics, and social platforms, with a focus on clean architecture and reusable components.",
-  
+
+      description: "Dubai-based digital product agency building web and mobile applications for UAE and wider GCC clients; part of the Nanosoft Technologies group.",
+
   responsibilities: [
-    "Developed and maintained multiple Android applications using Kotlin, MVVM, and Clean Architecture",
-    "Translated business requirements into well-structured, scalable, and maintainable Android codebases",
-    "Built reusable UI and domain components to accelerate development across different projects",
-    "Implemented location-based features using Google Maps and QR-based workflows",
-    "Integrated third-party SDKs and REST APIs using Retrofit and asynchronous programming patterns",
-    "Worked on user-facing and vendor-facing applications with distinct roles and feature sets",
-    "Focused on UI responsiveness, performance optimization, and clean code practices"
+    "Built Boomerang, a real-time flight and luggage tracking application with live location updates, group chat and social activity feeds, optimised for battery efficiency under continuous location streaming",
+    "Built RentEZ, a consumer rental and booking application with payments, catalogue browsing and API-driven business flows, using MVVM and Clean Architecture",
+    "Contributed to SellNow, a marketplace platform that won a MENA Digital Award in 2022, integrating multiple REST APIs and business workflows into a large-scale Android codebase",
+    "Implemented right-to-left (RTL) layout support and multi-language UI across client applications, handling mirrored layouts, directional assets and locale-aware formatting for Arabic-speaking users",
+    "Shipped production applications across native Android (Kotlin) and Flutter (Dart) for UAE-market clients in e-commerce, marketplace, social, logistics and health-monitoring domains",
+    "Engineered reusable UI components and shared business-logic modules that improved code maintainability by 40% and accelerated delivery across client projects",
+    "Owned full feature lifecycles from requirements and architecture through implementation, testing, Play Store release and post-release support"
   ],
-  
+
   techStack: [
     "Kotlin",
     "Java",
+    "Flutter",
     "Android SDK",
     "MVVM",
     "Clean Architecture",
     "Retrofit",
     "REST APIs",
     "Google Maps API",
+    "Firebase",
     "Coroutines"
   ]
   },
   {
     id: "cento-square",
-    company: "CentoSquare",
-    role: "Intern",
-    period: "2021",
+    company: "Centosquare",
+    role: "Software Engineering Intern",
+    period: "March 2020 – August 2020",
     location: "Karachi, Pakistan",
-    type: "Full-time",
-    
-   description: "Android development internship focused on learning core platform concepts through hands-on practice and demo applications.",
-  
+    type: "Internship",
+
+   description: "Android development internship building applications in Java.",
+
   responsibilities: [
-    "Built demo Android applications to learn core Android development concepts using Java",
-    "Practiced integrating REST APIs using Retrofit for network communication",
-    "Worked with local storage solutions for persisting application data",
-    "Implemented basic UI screens and layouts following Android UI guidelines",
-    "Gained hands-on experience with Android Studio and debugging tools"
+    "Built Android applications in Java with Retrofit API integration, local persistence and responsive UI implementation"
   ],
   
   techStack: [
@@ -467,6 +558,11 @@ export const skills = {
       { name: "Jetpack Compose", level: "Intermediate" },
       { name: "ViewModel, LiveData & StateFlow", level: "Expert" },
       { name: "Coroutines & Flow", level: "Expert" },
+      { name: "Hilt (DI)", level: "Advanced" },
+      { name: "Navigation & Paging", level: "Advanced" },
+      { name: "Room & DataStore", level: "Advanced" },
+      { name: "MQTT & WebSockets", level: "Advanced" },
+      { name: "ML Kit", level: "Intermediate" },
       { name: "Offline-first Architecture", level: "Advanced" },
       { name: "WorkManager", level: "Advanced" },
       { name: "Modular Architecture", level: "Advanced" },
@@ -509,7 +605,9 @@ export const skills = {
       { name: "Firebase (FCM, Crashlytics, Analytics)", level: "Advanced" },
       { name: "CI/CD (GitHub Actions)", level: "Intermediate" },
       { name: "Gradle", level: "Advanced" },
-      { name: "Play Console", level: "Advanced" }
+      { name: "Play Console", level: "Advanced" },
+      { name: "App Store Connect", level: "Intermediate" },
+      { name: "Unit Testing (JUnit, Mockito)", level: "Intermediate" }
     ]
   },
   
@@ -520,6 +618,8 @@ export const skills = {
     { name: "Banking & Payment Systems", level: "Advanced" },
     { name: "E-Commerce Platforms", level: "Advanced" },
     { name: "Transaction Processing", level: "Advanced" },
+    { name: "Regulated eKYC Onboarding", level: "Advanced" },
+    { name: "RTL & Multi-language UI", level: "Advanced" },
     { name: "Offline & Low-Connectivity Systems", level: "Advanced" }
   ]
 }
